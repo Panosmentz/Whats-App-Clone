@@ -43,6 +43,11 @@ function Login() {
   };
 
   if (isAuthenticated === true) {
+    console.log(
+      "This is the current user from log in component : ",
+      currentUser,
+      isAuthenticated
+    );
     return <Redirect to="/rooms/" />;
   }
 
