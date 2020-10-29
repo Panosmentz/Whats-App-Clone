@@ -24,6 +24,13 @@ export default (state, action) => {
           ...state,
           isAuthenticated: false,
         };
+        case "SIGN_UP_EMAIL_PWD":
+          return {
+            ...state,
+            isAuthenticated: true,
+            currentUser: action.payload,
+            registration: true
+          };
     default:
       return state;
   }

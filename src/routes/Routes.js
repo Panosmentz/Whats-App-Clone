@@ -7,7 +7,7 @@ import Login from "../Components/Login/Login"
 import HomePage from "../Components/HomePage/HomePage"
 import NotFound from "../Components/NotFound/NotFound"
 import About from "../Components/About/About";
-import Register from "../Components/Register/Register";
+import Register from "../Components/Register/Register2";
 import PrivateRoute from "./PrivateRoute"
 
 

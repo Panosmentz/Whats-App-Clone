@@ -1,15 +1,17 @@
 import React, { useEffect, useState, useContext, Fragment } from "react";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
-import Navbar2 from "./Components/Navbar/Navbar2";
+
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Chat from "./Components/Chat/Chat";
 import Login from "./Components/Login/Login";
+import SignIn from "./Components/Login/Login2"
 import HomePage from "./Components/HomePage/HomePage";
 import NotFound from "./Components/NotFound/NotFound";
 import About from "./Components/About/About";
-import Register from "./Components/Register/Register";
+
 import Routes from "./routes/Routes"
+import SignUp from "./Components/Register/Register2"
 import {
   BrowserRouter as Router,
   Switch,
@@ -58,9 +60,9 @@ function App() {
           <Router>
             <Navbar />
            
-            <Route exact path="/" component={HomePage} />
+            <Route exact path="/" component={SignIn} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
+            <Route exact path="/register" component={SignUp} />
             <Route exact path="/about" component={About} />
            
             <PrivateRoute path="/rooms/" component={Sidebar} />
