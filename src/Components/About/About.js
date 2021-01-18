@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import "./About.css";
 import { StateContext } from "../../context/StateContext";
 
 function About() {

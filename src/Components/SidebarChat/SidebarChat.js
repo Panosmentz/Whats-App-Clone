@@ -1,12 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./SidebarChat.css";
 import { Avatar } from "@material-ui/core";
 import db from "../../config/firebase";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  sidebarChat: {
+    display: "flex",
+    padding: "20px",
+    cursor: "pointer",
+    borderBottom: "1px solid #f6f6f6",
+    "&:hover": {
+      backgroundColor: "#ebebeb",
+    },
+  },
+  chatInfo: {
+    marginLeft: "15px",
+    "& h2": {
+      fontSize: "20px",
+      marginBottom: "8px",
+    },
+  },
+});
 
 function SidebarChat({ id, name, addNewChat }) {
   const [seed, setSeed] = useState("");
   const [messages, setMessages] = useState("");
+  const classes = useStyles();
 
   useEffect(() => {
     if (id) {
@@ -36,12 +56,12 @@ function SidebarChat({ id, name, addNewChat }) {
 
   return !addNewChat ? (
     <Link to={`/rooms/${id}`}>
-      <div className="sidebarChat">
+      <div className={classes.sidebarChat}>
         <Avatar
           src={`https://avatars.dicebear.com/api/avataaars/${seed}.svg
 `}
         />
-        <div className="sidebarChat__info">
+        <div className={classes.chatInfo}>
           <h2>{name}</h2>
           <p>{messages[0]?.message}</p>
         </div>

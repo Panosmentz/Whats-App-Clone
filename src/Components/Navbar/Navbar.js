@@ -77,7 +77,7 @@ function Navbar() {
       onClick: () => {
         logOut();
         history.push("/login");
-        console.log("User has signed out - or has he?")
+        console.log("User has signed out - or has he?");
       },
     },
   ];
