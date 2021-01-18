@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext, Fragment } from "react";
-import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 
 import Sidebar from "./Components/Sidebar/Sidebar";
@@ -22,14 +21,35 @@ import { StateProvider, StateContext } from "./context/StateContext";
 
 import { auth } from "./config/firebase";
 import PrivateRoute from "./routes/PrivateRoute";
+import { makeStyles } from "@material-ui/core/styles";
+
+//#464775
+
+const useStyles = makeStyles({
+  app: {
+    display: "grid",
+    placeItems: "center",
+    backgroundColor: "#2d2c2c",
+    height: "100vh",
+  },
+  appBody: {
+    display: "flex",
+    height: "90vh",
+    width: "90vw",
+    marginTop: "50px",
+    backgroundColor: "#2d2c2c",
+    boxShadow: "-1px 4px 20px -6px rgba(0, 0, 0, 0.7)",
+  },
+});
 
 function App() {
   const { currentUser, loadUser, isAuthenticated } = useContext(StateContext);
+  const classes = useStyles();
 
   return (
     <StateProvider>
-      <div className="app">
-        <div className="app__body">
+      <div className={classes.app}>
+        <div className={classes.appBody}>
           <Router>
             <Navbar />
 
