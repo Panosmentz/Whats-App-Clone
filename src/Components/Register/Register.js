@@ -1,59 +1,71 @@
-import React, { useContext, useState } from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import { Link, Redirect } from "react-router-dom"
+import React, { useContext, useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import { Link, Redirect } from "react-router-dom";
 import { StateContext } from "../../context/StateContext";
-
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: "#30d84e",
+    backgroundColor: "#00a87e",
+  },
+  typography: {
+    color: "#00a87e",
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
+    width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(3),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    backgroundColor: "#30d84e",
+    backgroundColor: "#00a87e",
+  },
+  button: {
+    color: "#00a87e",
   },
   textfield: {
+    "& .MuiOutlinedInput-input": {
+      color: "#00a87e",
+    },
+    "& .MuiInputLabel-root": {
+      color: "#005c45",
+    },
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-      borderColor: "#30d84e"
+      borderColor: "#00a87e",
     },
 
-
     "& .MuiInputLabel-outlined.Mui-focused": {
-      color: "#30d84e"
-    }
-  }
+      color: "#00a87e",
+    },
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#00a87e",
+    },
+  },
 }));
 
 export default function SignUp() {
   const { signUpEmailPwd, registration } = useContext(StateContext);
   const classes = useStyles();
   const [formData, setFormData] = useState({
-    fname:"",
-    lname:"",
-    email:"",
-    password:"",
-    password2:"",
-
-  })
+    fname: "",
+    lname: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
 
   const { fname, lname, email, password, password2 } = formData;
   const onChange = (e) =>
@@ -61,10 +73,10 @@ export default function SignUp() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (password !== password2){
+    if (password !== password2) {
       console.log("password don't match");
     } else {
-      signUpEmailPwd({ fname, lname, email, password});
+      signUpEmailPwd({ fname, lname, email, password });
     }
   };
 
@@ -79,14 +91,14 @@ export default function SignUp() {
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography className={classes.typography} component="h1" variant="h5">
           Sign up
         </Typography>
         <form className={classes.form} onSubmit={onSubmit} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-              className={classes.textfield}
+                className={classes.textfield}
                 variant="outlined"
                 required
                 fullWidth
@@ -100,8 +112,8 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-              className={classes.textfield}
-                 variant="outlined"
+                className={classes.textfield}
+                variant="outlined"
                 required
                 fullWidth
                 id="lname"
@@ -114,7 +126,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-              className={classes.textfield}
+                className={classes.textfield}
                 variant="outlined"
                 required
                 fullWidth
@@ -128,7 +140,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-              className={classes.textfield}
+                className={classes.textfield}
                 variant="outlined"
                 required
                 fullWidth
@@ -143,7 +155,7 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-              className={classes.textfield}
+                className={classes.textfield}
                 variant="outlined"
                 required
                 fullWidth
@@ -166,14 +178,17 @@ export default function SignUp() {
           >
             Sign Up
           </Button>
-
         </form>
         <Grid container justify="flex-center">
           <Grid item>
-
-            <Button component={Link} to="/" color="primary">
+            <Button
+              className={classes.button}
+              component={Link}
+              to="/login"
+              color="primary"
+            >
               Already have an account? Sign in
-    </Button>
+            </Button>
           </Grid>
         </Grid>
       </div>

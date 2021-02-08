@@ -34,11 +34,10 @@ const useStyles = makeStyles({
   },
   appBody: {
     display: "flex",
-    height: "90vh",
-    width: "90vw",
+    height: "100%",
+    width: "100%",
     marginTop: "50px",
     backgroundColor: "#2d2c2c",
-    boxShadow: "-1px 4px 20px -6px rgba(0, 0, 0, 0.7)",
   },
 });
 
@@ -53,7 +52,7 @@ function App() {
           <Router>
             <Navbar />
 
-            <Route exact path="/" component={SignIn} />
+            <Route exact path="/" component={HomePage} />
             <Route exact path="/login" component={SignIn} />
             <Route exact path="/register" component={SignUp} />
             <Route exact path="/about" component={About} />

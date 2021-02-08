@@ -33,8 +33,11 @@ const useStyles = makeStyles({
   title: {
     flexGrow: 1,
   },
-  drawer: {
-    width: "250px",
+  paper: {
+    background: "#00a87e",
+    color: "#fff",
+    width: "30%",
+    height: "100%",
   },
   button: {
     color: "green",
@@ -110,7 +113,7 @@ function Navbar() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" style={{ backgroundColor: "#30d84e" }}>
+      <AppBar position="fixed" style={{ backgroundColor: "#00a87e" }}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -130,7 +133,7 @@ function Navbar() {
       <Drawer
         anchor={"left"}
         open={state}
-        className={classes.drawer}
+        classes={{ paper: classes.paper }}
         onClose={toggleDrawer(false)}
       >
         <div onClick={toggleDrawer(false)}>
