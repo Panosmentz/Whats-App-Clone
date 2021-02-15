@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-
 import { Avatar, IconButton } from "@material-ui/core";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import AttachFile from "@material-ui/icons/AttachFile";
@@ -8,22 +7,25 @@ import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import MicIcon from "@material-ui/icons/Mic";
 import { useParams } from "react-router-dom";
 import db from "../../config/firebase";
-//import { useStateValue } from "../../context/StateProvider";
 import { StateContext } from "../../context/StateContext";
 import firebase from "firebase";
 import { makeStyles } from "@material-ui/core/styles";
-
+import background from "../../assets/background.png";
 const useStyles = makeStyles({
   chat: {
-    flex: 0.65,
+    flex: 0.8,
+    marginTop: "20px",
     display: "flex",
     flexDirection: "column",
+    // height: "100vh",
+    // overflowY: "auto",
   },
   header: {
     padding: "20px",
     display: "flex",
     alignItems: "center",
-    borderBottom: "1px solid lightgray",
+    borderBottom: "1px solid #42413e",
+    color: "#fff",
   },
   headerInfo: {
     flex: 1,
@@ -36,11 +38,12 @@ const useStyles = makeStyles({
   },
   body: {
     flex: 1,
-    backgroundImage: `url("https://i.redd.it/qwd83nc4xxf41.jpg")`,
+    backgroundImage: `url(${background})`,
     backgroundRepeat: "repeat",
     backgroundPosition: "center",
     padding: "30px",
-    overflow: "scroll",
+    display: "flex",
+    flexDirection: "column",
   },
   message: {
     position: "relative",
@@ -68,10 +71,10 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    height: "60px",
-    borderTop: "1px solid lightgray",
+    height: "70px",
+    borderTop: "1px solid #42413e",
+    borderLeft: "1px solid #42413e",
     "& form": {
-      color: "red",
       flex: 1,
       display: "flex",
       "& input": {
@@ -79,6 +82,7 @@ const useStyles = makeStyles({
         borderRadius: "30px",
         padding: "10px",
         border: "none",
+        outline: "none",
       },
     },
     "& button": {

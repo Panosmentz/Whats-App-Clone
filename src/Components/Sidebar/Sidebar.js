@@ -13,7 +13,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   sidebar: {
-    flex: 0.35,
+    flex: 0.2,
+    marginTop: "50px",
     display: "flex",
     flexDirection: "column",
   },
@@ -21,10 +22,11 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     padding: "20px",
-    borderRight: "1px solid lightgray",
+    borderRight: "1px solid #42413e",
   },
   headerRight: {
     display: "flex",
+
     alignItems: "space-between",
     minWidth: "10vw",
     "& .MuiSvgIcon-root": {
@@ -35,20 +37,23 @@ const useStyles = makeStyles({
   search: {
     display: "flex",
     alignItems: "center",
-    backgroundColor: "#f6f6f6",
+    backgroundColor: "#42413e",
     height: "40px",
     padding: "10px",
   },
   searchContainer: {
     display: "flex",
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: "#42413e",
     width: "100%",
     height: "35px",
-    borderRadius: "20px",
+    borderRadius: "50px",
     "& input": {
+      flex: 1,
+      borderRadius: "30px",
+      padding: "10px",
       border: "none",
-      marginLeft: "10px",
+      outline: "none",
     },
     "& .MuiSvgIcon-root": {
       color: "gray",
@@ -56,7 +61,7 @@ const useStyles = makeStyles({
   },
   chats: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#2d2c2c",
     overflow: "hidden",
   },
 });

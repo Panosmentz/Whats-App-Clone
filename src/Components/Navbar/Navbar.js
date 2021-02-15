@@ -62,11 +62,7 @@ function Navbar() {
       icon: <HomeIcon />,
       onClick: () => history.push("/"),
     },
-    {
-      text: "About",
-      icon: <InfoIcon />,
-      onClick: () => history.push("/about"),
-    },
+
     {
       text: "Chat",
       icon: <ChatIcon />,
@@ -91,11 +87,7 @@ function Navbar() {
       icon: <HomeIcon />,
       onClick: () => history.push("/"),
     },
-    {
-      text: "About",
-      icon: <InfoIcon />,
-      onClick: () => history.push("/about"),
-    },
+
     {
       text: "Login",
       icon: <LockOpenIcon />,

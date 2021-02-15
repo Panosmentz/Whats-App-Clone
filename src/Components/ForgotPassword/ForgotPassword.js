@@ -1,16 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import { Redirect, Link } from "react-router-dom";
-import { StateContext } from "../../context/StateContext";
 import Grid from "@material-ui/core/Grid";
-
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/core/styles";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { StateContext } from "../../context/StateContext";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -61,37 +60,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
-  const { currentUser, isAuthenticated, signIn, signInGoogle } = useContext(
-    StateContext
-  );
+function ForgotPassword() {
+  const { resetPassword } = useContext(StateContext);
   const classes = useStyles();
+  const [formData, setFormData] = useState({ email: "" });
 
-  const [formData, setFormData] = useState({ email: "", password: "" });
-
-  const { email, password } = formData;
+  const { email } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    signIn(email, password);
+    resetPassword(email);
   };
-
-  const onSubmitGoogle = async (e) => {
-    e.preventDefault();
-    signInGoogle();
-  };
-
-  if (isAuthenticated === true) {
-    console.log(
-      "This is the current user from log in component : ",
-      currentUser,
-      isAuthenticated
-    );
-    return <Redirect to="/rooms/" />;
-  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -101,7 +83,7 @@ export default function SignIn() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography className={classes.typography} component="h1" variant="h5">
-          Sign in
+          Password Reset
         </Typography>
         <form className={classes.form} noValidate onSubmit={onSubmit}>
           <TextField
@@ -118,20 +100,6 @@ export default function SignIn() {
             value={email}
             onChange={(e) => onChange(e)}
           />
-          <TextField
-            className={classes.textfield}
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => onChange(e)}
-          />
 
           <Button
             type="submit"
@@ -140,17 +108,13 @@ export default function SignIn() {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            RESET
           </Button>
         </form>
         <Grid container>
           <Grid item xs>
-            <Button
-              className={classes.button}
-              component={Link}
-              to="/forgot-password"
-            >
-              Forgot Password?
+            <Button className={classes.button} component={Link} to="/login">
+              Back to log in
             </Button>
           </Grid>
           <Grid item>
@@ -160,33 +124,8 @@ export default function SignIn() {
           </Grid>
         </Grid>
       </div>
-      <Typography
-        className={classes.google}
-        component="h1"
-        variant="h5"
-        align="center"
-      >
-        or
-      </Typography>
-      <Grid container>
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.submit}
-          onClick={onSubmitGoogle}
-          startIcon={
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
-              width="40px"
-              height="40px"
-            ></img>
-          }
-        >
-          Sign In with Google
-        </Button>
-      </Grid>
     </Container>
   );
 }
+
+export default ForgotPassword;

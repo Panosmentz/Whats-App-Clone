@@ -8,11 +8,12 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   sidebarChat: {
     display: "flex",
-    padding: "20px",
+    padding: "10px",
     cursor: "pointer",
-    borderBottom: "1px solid #f6f6f6",
+    color: "#fff",
+    borderBottom: "1px solid #42413e",
     "&:hover": {
-      backgroundColor: "#ebebeb",
+      backgroundColor: "#636262",
     },
   },
   chatInfo: {
@@ -73,7 +74,7 @@ function SidebarChat({ id, name, addNewChat }) {
     </Link>
   ) : (
     <div onClick={createChat} className={classes.sidebarChat}>
-      <h2>Add new Chat Room</h2>
+      <h2>Add New Room</h2>
     </div>
   );
 }
