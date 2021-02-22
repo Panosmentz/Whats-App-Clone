@@ -4,20 +4,18 @@ import { makeStyles } from "@material-ui/core/styles";
 import { CssBaseline, Grid, Typography } from "@material-ui/core";
 import Chat from "../../assets/chat.svg";
 import Typewriter from "typewriter-effect";
-import Copyright from "../Footer/Footer";
-import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles({
   root: {
-    marginTop: "100px",
     display: "flex",
     flexGrow: 1,
   },
   typography: {
     display: "flex",
     justifyContent: "center",
-    fontSize: "50px",
-    color: "#fff",
+    fontSize: "90px",
+    color: "#00a87e",
+    fontFamily: "Amatic SC, cursive",
   },
   imageContainer: {
     display: "flex",
@@ -29,7 +27,6 @@ const useStyles = makeStyles({
     backgroundColor: "#00a87e",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
     border: 0,
   },
 });
@@ -53,9 +50,6 @@ function HomePage() {
         </Grid>
         <Grid item lg={6} xs={12} className={classes.loginContainer}>
           <SignIn />
-        </Grid>
-        <Grid item lg={12} xs={12} className={classes.footer}>
-          <Copyright />
         </Grid>
       </Grid>
     </div>

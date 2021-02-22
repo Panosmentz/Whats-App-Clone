@@ -38,6 +38,17 @@ export const StateProvider = ({ children }) => {
           type: "SET_USER",
           payload: result.user,
         });
+        if (result.user) {
+          toast.success("Welcome " + result.user.displayName, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+          });
+        }
       });
     } catch (error) {
       alert(error);
@@ -51,6 +62,17 @@ export const StateProvider = ({ children }) => {
           type: "SET_USER",
           payload: result.user,
         });
+        if (result.user) {
+          toast.success("Welcome " + result.user.displayName, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+          });
+        }
       });
     } catch (error) {
       alert(error);
@@ -71,6 +93,15 @@ export const StateProvider = ({ children }) => {
                   type: "SIGN_UP_EMAIL_PWD",
                   payload: userCredential.user,
                 });
+                toast.success("Your account has been created successfully", {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: false,
+                  draggable: true,
+                  progress: undefined,
+                });
               });
           }
         });
@@ -83,6 +114,15 @@ export const StateProvider = ({ children }) => {
     try {
       await auth.signOut();
       dispatch({ type: "SIGN_OUT" });
+      toast.warning("You have been signed out successfully", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (error) {
       alert(error);
     }

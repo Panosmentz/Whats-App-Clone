@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { Avatar, IconButton } from "@material-ui/core";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import AttachFile from "@material-ui/icons/AttachFile";
@@ -11,14 +11,16 @@ import { StateContext } from "../../context/StateContext";
 import firebase from "firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import background from "../../assets/background.png";
+import ReactDOM from "react-dom";
+
 const useStyles = makeStyles({
   chat: {
     flex: 0.8,
     marginTop: "20px",
     display: "flex",
     flexDirection: "column",
-    // height: "100vh",
-    // overflowY: "auto",
+    height: "100vh",
+    overflowY: "auto",
   },
   header: {
     padding: "20px",
@@ -58,6 +60,7 @@ const useStyles = makeStyles({
     top: "-15px",
     fontWeight: 800,
     fontSize: "x-small",
+    color: "#2fa77e",
   },
   receiver: {
     marginLeft: "auto",
@@ -103,6 +106,11 @@ function Chat() {
   //const [{ user }, dispatch] = useStateValue();
   const { currentUser } = useContext(StateContext);
   const classes = useStyles();
+  const messagesEndRef = useRef(null);
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(scrollToBottom, [messages]);
 
   useEffect(() => {
     console.log(roomId);
@@ -179,6 +187,7 @@ function Chat() {
             </span>
           </p>
         ))}
+        <div ref={messagesEndRef} />
       </div>
 
       <div className={classes.footer}>

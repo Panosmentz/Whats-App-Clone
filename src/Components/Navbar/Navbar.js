@@ -38,6 +38,7 @@ const useStyles = makeStyles({
     color: "#fff",
     width: "30%",
     height: "100%",
+    display: "flex",
   },
   button: {
     color: "green",
