@@ -11,6 +11,19 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { useFormik } from "formik";
+import * as yup from "yup";
+
+const validationSchema = yup.object({
+  email: yup
+    .string("Enter your email")
+    .email("Enter a valid email")
+    .required("Email is required"),
+  password: yup
+    .string("Enter your password")
+    .min(6, "Password should be of minimum 6 characters length")
+    .required("Password is required"),
+});
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -62,22 +75,32 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignIn() {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      signIn(formik.values.email, formik.values.password);
+    },
+  });
   const { currentUser, isAuthenticated, signIn, signInGoogle } = useContext(
     StateContext
   );
   const classes = useStyles();
 
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  //const [formData, setFormData] = useState({ email: "", password: "" });
 
-  const { email, password } = formData;
+  // const { email, password } = formData;
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  //const onChange = (e) =>
+  //  setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    signIn(email, password);
-  };
+  //const onSubmit = async (e) => {
+  //  e.preventDefault();
+  //  signIn(email, password);
+  //};
 
   const onSubmitGoogle = async (e) => {
     e.preventDefault();
@@ -103,34 +126,36 @@ export default function SignIn() {
         <Typography className={classes.typography} component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate onSubmit={onSubmit}>
+        <form className={classes.form} onSubmit={formik.handleSubmit}>
           <TextField
             className={classes.textfield}
             variant="outlined"
             margin="normal"
-            required
             fullWidth
             id="email"
             label="Email Address"
             name="email"
             autoComplete="email"
             autoFocus
-            value={email}
-            onChange={(e) => onChange(e)}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
           />
           <TextField
             className={classes.textfield}
             variant="outlined"
             margin="normal"
-            required
             fullWidth
             name="password"
             label="Password"
             type="password"
             id="password"
             autoComplete="current-password"
-            value={password}
-            onChange={(e) => onChange(e)}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
           />
 
           <Button

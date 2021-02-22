@@ -10,6 +10,31 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Link, Redirect } from "react-router-dom";
 import { StateContext } from "../../context/StateContext";
+import { useFormik } from "formik";
+import * as yup from "yup";
+
+const validationSchema = yup.object({
+  fname: yup
+    .string("Enter your first name")
+    .max(20)
+    .required("First Name is required"),
+  lname: yup
+    .string("Enter your last name")
+    .max(20)
+    .required("Last Name is required"),
+  email: yup
+    .string("Enter your email")
+    .email("Enter a valid email")
+    .required("Email is required"),
+  password: yup
+    .string("Enter your password")
+    .min(6, "Password should be of minimum 6 characters length")
+    .required("Password is required"),
+  password2: yup
+    .string("Enter your password again")
+    .min(6, "Password should be of minimum 6 characters length")
+    .required("Password is required"),
+});
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -57,29 +82,48 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
-  const { signUpEmailPwd, registration } = useContext(StateContext);
-  const classes = useStyles();
-  const [formData, setFormData] = useState({
-    fname: "",
-    lname: "",
-    email: "",
-    password: "",
-    password2: "",
+  const formik = useFormik({
+    initialValues: {
+      fname: "",
+      lname: "",
+      email: "",
+      password: "",
+      password2: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      if (formik.values.password !== formik.values.password2) {
+        alert("Passwords don't match");
+      } else {
+        signUpEmailPwd(values);
+      }
+    },
   });
 
-  const { fname, lname, email, password, password2 } = formData;
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const { signUpEmailPwd, registration } = useContext(StateContext);
+  const classes = useStyles();
+  //const [formData, setFormData] = useState({
+  //  fname: "",
+  //  lname: "",
+  //  email: "",
+  //  password: "",
+  //  password2: "",
+  //});
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (password !== password2) {
-      console.log("password don't match");
-    } else {
-      signUpEmailPwd({ fname, lname, email, password });
-    }
-  };
+  // const { fname, lname, email, password, password2 } = formData;
+  // const onChange = (e) =>
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  //const onSubmit = async (e) => {
+  //  e.preventDefault();
+  //  if (password !== password2) {
+  //    console.log("password don't match");
+  //  } else {
+  //    signUpEmailPwd({ fname, lname, email, password });
+  //  }
+  //};
+
+  //onChange={(e) => onChange(e)}
   if (registration) {
     return <Redirect to="/" />;
   }
@@ -94,78 +138,88 @@ export default function SignUp() {
         <Typography className={classes.typography} component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} onSubmit={onSubmit} noValidate>
+
+        <form className={classes.form} onSubmit={formik.handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 className={classes.textfield}
                 variant="outlined"
-                required
                 fullWidth
                 id="fname"
                 label="First Name"
                 name="fname"
                 autoComplete="fname"
-                value={fname}
-                onChange={(e) => onChange(e)}
+                value={formik.values.fname}
+                onChange={formik.handleChange}
+                error={formik.touched.fname && Boolean(formik.errors.fname)}
+                helperText={formik.touched.fname && formik.errors.fname}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 className={classes.textfield}
                 variant="outlined"
-                required
                 fullWidth
                 id="lname"
                 label="Last Name"
                 name="lname"
                 autoComplete="lname"
-                value={lname}
-                onChange={(e) => onChange(e)}
+                value={formik.values.lname}
+                onChange={formik.handleChange}
+                error={formik.touched.lname && Boolean(formik.errors.lname)}
+                helperText={formik.touched.lname && formik.errors.lname}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 className={classes.textfield}
                 variant="outlined"
-                required
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                value={email}
-                onChange={(e) => onChange(e)}
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 className={classes.textfield}
                 variant="outlined"
-                required
                 fullWidth
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                value={password}
-                onChange={(e) => onChange(e)}
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
+                helperText={formik.touched.password && formik.errors.password}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 className={classes.textfield}
                 variant="outlined"
-                required
                 fullWidth
                 name="password2"
                 label="Confirm Password"
                 type="password"
                 id="password2"
                 autoComplete="current-password"
-                value={password2}
-                onChange={(e) => onChange(e)}
+                value={formik.values.password2}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.password2 && Boolean(formik.errors.password2)
+                }
+                helperText={formik.touched.password2 && formik.errors.password2}
               />
             </Grid>
           </Grid>

@@ -10,6 +10,15 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { StateContext } from "../../context/StateContext";
+import { useFormik } from "formik";
+import * as yup from "yup";
+
+const validationSchema = yup.object({
+  email: yup
+    .string("Enter your email")
+    .email("Enter a valid email")
+    .required("Email is required"),
+});
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -61,19 +70,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ForgotPassword() {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      resetPassword(formik.values.email);
+    },
+  });
+
   const { resetPassword } = useContext(StateContext);
   const classes = useStyles();
-  const [formData, setFormData] = useState({ email: "" });
+  //const [formData, setFormData] = useState({ email: "" });
 
-  const { email } = formData;
+  //const { email } = formData;
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  //const onChange = (e) =>
+  //  setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    resetPassword(email);
-  };
+  //const onSubmit = async (e) => {
+  //  e.preventDefault();
+  //  resetPassword(email);
+  //};
 
   return (
     <Container component="main" maxWidth="xs">
@@ -85,7 +104,7 @@ function ForgotPassword() {
         <Typography className={classes.typography} component="h1" variant="h5">
           Password Reset
         </Typography>
-        <form className={classes.form} noValidate onSubmit={onSubmit}>
+        <form className={classes.form} onSubmit={formik.handleSubmit}>
           <TextField
             className={classes.textfield}
             variant="outlined"
@@ -97,8 +116,10 @@ function ForgotPassword() {
             name="email"
             autoComplete="email"
             autoFocus
-            value={email}
-            onChange={(e) => onChange(e)}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
           />
 
           <Button

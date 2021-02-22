@@ -16,7 +16,7 @@ import ReactDOM from "react-dom";
 const useStyles = makeStyles({
   chat: {
     flex: 0.8,
-    marginTop: "20px",
+    marginTop: "40px",
     display: "flex",
     flexDirection: "column",
     height: "100vh",
@@ -37,6 +37,9 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     minWidth: "100px",
+    "& .MuiSvgIcon-root": {
+      color: "#fff",
+    },
   },
   body: {
     flex: 1,
