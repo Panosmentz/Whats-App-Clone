@@ -8,6 +8,7 @@ import SignIn from "./Components/Login/Login";
 import HomePage from "./Components/HomePage/HomePage";
 import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 import SignUp from "./Components/Register/Register";
+import Contact from "./Components/Contact/Contact";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { StateProvider, StateContext } from "./context/StateContext";
 import PrivateRoute from "./routes/PrivateRoute";
@@ -44,7 +45,7 @@ function App() {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/login" component={SignIn} />
             <Route exact path="/register" component={SignUp} />
-
+            <Route exact path="/contact" component={Contact} />
             <Route exact path="/forgot-password" component={ForgotPassword} />
 
             <PrivateRoute path="/rooms/" component={Sidebar} />

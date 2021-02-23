@@ -27,7 +27,6 @@ const validationSchema = yup.object({
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -41,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
   },
   button: {
     color: "#00a87e",
@@ -51,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#00a87e",
   },
   google: {
-    marginTop: theme.spacing(3),
     color: "#00a87e",
   },
   textfield: {

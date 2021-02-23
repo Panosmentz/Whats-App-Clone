@@ -27,7 +27,8 @@ import { StateContext } from "../../context/StateContext";
 import { Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
-
+import Contact from "../Contact/Contact";
+import ContactMailIcon from "@material-ui/icons/ContactMail";
 const useStyles = makeStyles({
   root: {},
   title: {
@@ -72,6 +73,11 @@ function Navbar() {
       },
     },
     {
+      text: "Contact",
+      icon: <ContactMailIcon />,
+      onClick: () => history.push("/contact"),
+    },
+    {
       text: "Logout",
       icon: <PowerSettingsNewIcon />,
       onClick: () => {
@@ -100,6 +106,11 @@ function Navbar() {
       onClick: () => {
         history.push("/register");
       },
+    },
+    {
+      text: "Contact",
+      icon: <ContactMailIcon />,
+      onClick: () => history.push("/contact"),
     },
   ];
 
