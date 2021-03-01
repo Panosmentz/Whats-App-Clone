@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
+import "emoji-mart/css/emoji-mart.css";
+import { Picker } from "emoji-mart";
 import { Avatar, IconButton } from "@material-ui/core";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import AttachFile from "@material-ui/icons/AttachFile";
@@ -11,6 +13,7 @@ import { StateContext } from "../../context/StateContext";
 import firebase from "firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import background from "../../assets/background.png";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import ReactDOM from "react-dom";
 
 const useStyles = makeStyles({
@@ -114,6 +117,26 @@ function Chat() {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   };
   useEffect(scrollToBottom, [messages]);
+  const [emojiPickerState, SetEmojiPicker] = useState(false);
+  let emojiPicker;
+  if (emojiPickerState) {
+    emojiPicker = (
+      <Picker
+        title="Pick your emoji…"
+        emoji="point_up"
+        onSelect={(emoji) => {
+          setInput(input + emoji.native);
+          SetEmojiPicker(!emojiPickerState);
+        }}
+        style={{ position: "absolute", bottom: "20px", left: "200px" }}
+        theme="dark"
+      />
+    );
+  }
+  function triggerPicker(event) {
+    event.preventDefault();
+    SetEmojiPicker(!emojiPickerState);
+  }
 
   useEffect(() => {
     console.log(roomId);
@@ -192,9 +215,11 @@ function Chat() {
         ))}
         <div ref={messagesEndRef} />
       </div>
+      {emojiPicker}
 
       <div className={classes.footer}>
-        <InsertEmoticonIcon />
+        <InsertEmoticonIcon onClick={triggerPicker} />
+
         <form>
           <input
             value={input}
@@ -204,8 +229,10 @@ function Chat() {
             }}
             placeholder="Type a message"
           />
+
           <button type="submit" onClick={sendMessage}></button>
         </form>
+
         <MicIcon />
       </div>
     </div>

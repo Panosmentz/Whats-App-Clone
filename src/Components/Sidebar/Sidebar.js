@@ -32,6 +32,7 @@ const useStyles = makeStyles({
     "& .MuiSvgIcon-root": {
       marginRight: "1vw",
       fontSize: "24px",
+      color: "#fff",
     },
   },
   search: {
