@@ -1,24 +1,18 @@
-### Whats-App-Clone
+# Whats App Clone
+> This is a Full Stack Whats App clone using [Firebase]( https://firebase.google.com/).
 
-### Technologies
+## Table of contents
+* [Overview](#overview)
+* [Screenshots](#screenshots)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Live-Demo](#live-demo)
+* [Contact](#contact)
 
-ReactJS
+## Overview
+> This is a React App where users can sign up, sign in and get password reset links sent to their email address. Once logged in, users can join Chat rooms and create new rooms. Authentication is implemented with Firebase Authentication and data storage with Cloud Firestore. Form validation is done with the use of Formik and Yup.
 
-MaterialUI
-
-Firebase
-
-EmailJS
-
-Formik - yup
-
-
-### Live demo
-
-https://youthful-haibt-148fc8.netlify.app/
-
-### Project Screenshots
-
+## Screenshots
 ![LandingPage](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/landing.PNG)
 ![signin](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/signin.PNG)
 ![signup](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/signup.PNG)
@@ -26,15 +20,16 @@ https://youthful-haibt-148fc8.netlify.app/
 ![contact](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/contact.PNG)
 ![suclogin](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/suclogin.PNG)
 ![chat](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/chat.PNG)
+## Technologies
+* ReactJS
+* Material UI
+* EmailJS
+* Formik - yup
 
-### App Setup
-
-Clone the repository or download the .zip folder
-
-Open an editor and open the folder Whats-App-Clone-master
-
-Run `npm install` 
-
+## Setup
+Clone this repository or download .zip and open the folder in your editor.
+>Open a cmd and install the dependencies on the root folder 
+>`npm install`
 
 **Setting up Firebase**
 
@@ -64,11 +59,8 @@ Where loremipsum is the data from your Firebase project
 
 Run `npm start`
 
-### Deployment 
+## Live-Demo
+[Live Demo]( https://youthful-haibt-148fc8.netlify.app/)
 
-Run `npm run build`
-
-Deploy the `build` folder that is generated on the project directory
-
-Set up environment values for the Firebase config data
-
+## Contact
+Created by [@Panagiotis Mentzelopoulos](https://determined-saha-b25d49.netlify.app/) - feel free to contact me!
