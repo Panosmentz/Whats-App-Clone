@@ -23,6 +23,7 @@
 ## Technologies
 * ReactJS
 * Material UI
+* Firebase
 * EmailJS
 * Formik - yup
 
