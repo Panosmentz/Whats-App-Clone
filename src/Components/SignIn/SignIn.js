@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -81,9 +81,7 @@ export default function SignIn() {
       signIn(formik.values.email, formik.values.password);
     },
   });
-  const { currentUser, isAuthenticated, signIn, signInGoogle } = useContext(
-    StateContext
-  );
+  const { isAuthenticated, signIn, signInGoogle } = useContext(StateContext);
   const classes = useStyles();
 
   const onSubmitGoogle = async (e) => {
@@ -183,6 +181,7 @@ export default function SignIn() {
           startIcon={
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+              alt="google logo"
               width="40px"
               height="40px"
             ></img>

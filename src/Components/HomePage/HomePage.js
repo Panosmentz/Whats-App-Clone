@@ -1,7 +1,7 @@
 import React from "react";
 import SignIn from "../SignIn/SignIn";
 import { makeStyles } from "@material-ui/core/styles";
-import { CssBaseline, Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Chat from "../../assets/chat.svg";
 import Typewriter from "typewriter-effect";
 
@@ -46,7 +46,12 @@ function HomePage() {
           />
         </Grid>
         <Grid item lg={6} xs={12} className={classes.imageContainer}>
-          <img src={Chat} width="500px" height="500px"></img>
+          <img
+            src={Chat}
+            alt="whatsapp logo"
+            width="500px"
+            height="500px"
+          ></img>
         </Grid>
         <Grid item lg={6} xs={12} className={classes.loginContainer}>
           <SignIn />

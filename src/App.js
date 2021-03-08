@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, Fragment } from "react";
+import React from "react";
 import Navbar from "./Components/Navbar/Navbar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -10,7 +10,7 @@ import ForgotPassword from "./Components/ForgotPassword/ForgotPassword";
 import SignUp from "./Components/SignUp/SignUp";
 import Contact from "./Components/Contact/Contact";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { StateProvider, StateContext } from "./context/StateContext";
+import { StateProvider } from "./context/StateContext";
 import PrivateRoute from "./routes/PrivateRoute";
 import { makeStyles } from "@material-ui/core/styles";
 
