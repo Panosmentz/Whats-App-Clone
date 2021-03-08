@@ -3,7 +3,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#00a87e",
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
   },
   button: {
     color: "#00a87e",
@@ -76,17 +76,6 @@ function ForgotPassword() {
 
   const { resetPassword } = useContext(StateContext);
   const classes = useStyles();
-  //const [formData, setFormData] = useState({ email: "" });
-
-  //const { email } = formData;
-
-  //const onChange = (e) =>
-  //  setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  //const onSubmit = async (e) => {
-  //  e.preventDefault();
-  //  resetPassword(email);
-  //};
 
   return (
     <Container component="main" maxWidth="xs">
@@ -127,12 +116,12 @@ function ForgotPassword() {
         </form>
         <Grid container>
           <Grid item xs>
-            <Button className={classes.button} component={Link} to="/login">
+            <Button className={classes.button} component={Link} to="/signin">
               Back to log in
             </Button>
           </Grid>
           <Grid item>
-            <Button className={classes.button} component={Link} to="/register">
+            <Button className={classes.button} component={Link} to="/signup">
               Don't have an account? Sign Up
             </Button>
           </Grid>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { Avatar } from "@material-ui/core";
 import db from "../../config/firebase";
 import { makeStyles } from "@material-ui/core/styles";

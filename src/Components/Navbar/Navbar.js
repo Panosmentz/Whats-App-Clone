@@ -1,34 +1,25 @@
-import React, { useState, useContext, useEffect } from "react";
-import clsx from "clsx";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import Drawer from "@material-ui/core/Drawer";
-import InfoIcon from "@material-ui/icons/Info";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import HomeIcon from "@material-ui/icons/Home";
 import { useHistory } from "react-router-dom";
 import ChatIcon from "@material-ui/icons/Chat";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
-import { LocalDiningOutlined } from "@material-ui/icons";
-import { Redirect } from "react-router-dom";
 import { StateContext } from "../../context/StateContext";
 import { Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import Contact from "../Contact/Contact";
 import ContactMailIcon from "@material-ui/icons/ContactMail";
+
 const useStyles = makeStyles({
   root: {},
   title: {
@@ -47,11 +38,8 @@ const useStyles = makeStyles({
 });
 
 function Navbar() {
-  const { isAuthenticated, logOut, loadUser } = useContext(StateContext);
+  const { isAuthenticated, logOut } = useContext(StateContext);
   let history = useHistory();
-
-  //let isAuth = localStorage.getItem("isAuthenticated");
-
   const classes = useStyles();
   const [state, setState] = useState(false);
   const toggleDrawer = (open) => (event) => {
@@ -82,8 +70,7 @@ function Navbar() {
       icon: <PowerSettingsNewIcon />,
       onClick: () => {
         logOut();
-        history.push("/login");
-        console.log("User has signed out - or has he?");
+        history.push("/signin");
       },
     },
   ];
@@ -96,15 +83,15 @@ function Navbar() {
     },
 
     {
-      text: "Login",
+      text: "Sign In",
       icon: <LockOpenIcon />,
-      onClick: () => history.push("/login"),
+      onClick: () => history.push("/signin"),
     },
     {
-      text: "Register",
+      text: "Sign Up",
       icon: <AccountBoxIcon />,
       onClick: () => {
-        history.push("/register");
+        history.push("/signup");
       },
     },
     {
@@ -171,23 +158,5 @@ function Navbar() {
     </div>
   );
 }
-
-//  const list = () => (
-//    <div onClick={toggleDrawer(false)}>
-//      <List>
-//        <ListItem button>it works??</ListItem>
-//      </List>
-//    </div>
-//  );
-//
-//  return (
-//    <div>
-//      <Button onClick={toggleDrawer(true)}>Open shit</Button>
-//      <Drawer anchor={"top"} open={state} onClose={toggleDrawer(false)}>
-//        {list()}
-//      </Drawer>
-//    </div>
-//  );
-//}
 
 export default Navbar;

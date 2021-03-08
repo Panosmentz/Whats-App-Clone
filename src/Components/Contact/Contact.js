@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#00a87e",
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
   },
   button: {
     color: "#00a87e",
@@ -72,25 +72,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//function sendEmail(e) {
-//  e.preventDefault();
-//  emailjs
-//    .sendForm(
-//      "gmail",
-//      "template_uk0zasm",
-//      e.target,
-//      "user_C1Ytu0nlrfPYynNIZQJYD"
-//    )
-//    .then(
-//      (result) => {
-//        console.log(result.text);
-//      },
-//      (error) => {
-//        console.log(error.text);
-//      }
-//    );
-//  e.target.reset();
-//}
 function Contact() {
   const formik = useFormik({
     initialValues: {
@@ -110,7 +91,6 @@ function Contact() {
         )
         .then(
           function (response) {
-            console.log("SUCCESS!", response.status, response.text);
             if (response.status === 200) {
               toast.success(
                 "Thank you for contacting us. Your form has been submitted",
@@ -127,7 +107,7 @@ function Contact() {
             }
           },
           function (err) {
-            console.log("FAILED...", err);
+            alert("FAILED...", err);
           }
         );
       resetForm({ values: "" });

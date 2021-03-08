@@ -1,5 +1,5 @@
 import React from "react";
-import SignIn from "../Login/Login";
+import SignIn from "../SignIn/SignIn";
 import { makeStyles } from "@material-ui/core/styles";
 import { CssBaseline, Grid, Typography } from "@material-ui/core";
 import Chat from "../../assets/chat.svg";

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     marginTop: "30px",
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -101,28 +101,7 @@ export default function SignUp() {
 
   const { signUpEmailPwd, registration } = useContext(StateContext);
   const classes = useStyles();
-  //const [formData, setFormData] = useState({
-  //  fname: "",
-  //  lname: "",
-  //  email: "",
-  //  password: "",
-  //  password2: "",
-  //});
 
-  // const { fname, lname, email, password, password2 } = formData;
-  // const onChange = (e) =>
-  //   setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  //const onSubmit = async (e) => {
-  //  e.preventDefault();
-  //  if (password !== password2) {
-  //    console.log("password don't match");
-  //  } else {
-  //    signUpEmailPwd({ fname, lname, email, password });
-  //  }
-  //};
-
-  //onChange={(e) => onChange(e)}
   if (registration) {
     return <Redirect to="/" />;
   }
@@ -237,7 +216,7 @@ export default function SignUp() {
             <Button
               className={classes.button}
               component={Link}
-              to="/login"
+              to="/signin"
               color="primary"
             >
               Already have an account? Sign in

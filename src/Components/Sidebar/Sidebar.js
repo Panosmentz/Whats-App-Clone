@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-
 import { Avatar, IconButton } from "@material-ui/core";
 import DonutLarge from "@material-ui/icons/DonutLarge";
 import ChatIcon from "@material-ui/icons/Chat";
@@ -7,7 +6,6 @@ import MoreVert from "@material-ui/icons/MoreVert";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
 import SidebarChat from "../SidebarChat/SidebarChat";
 import db from "../../config/firebase";
-//import { useStateValue } from "../../context/StateProvider";
 import { StateContext } from "../../context/StateContext";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -69,12 +67,10 @@ const useStyles = makeStyles({
 
 function Sidebar() {
   const [rooms, setRooms] = useState([]);
-  //const [{ user }, dispatch] = useStateValue();
   const { currentUser } = useContext(StateContext);
   const classes = useStyles();
 
   useEffect(() => {
-    console.log("this is the user from Sidebar.js", currentUser);
     db.collection("rooms").onSnapshot((snapshot) =>
       setRooms(
         snapshot.docs.map((doc) => ({

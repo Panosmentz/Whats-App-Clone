@@ -13,8 +13,6 @@ import { StateContext } from "../../context/StateContext";
 import firebase from "firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import background from "../../assets/background.png";
-import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import ReactDOM from "react-dom";
 
 const useStyles = makeStyles({
   chat: {
@@ -109,7 +107,6 @@ function Chat() {
   const { roomId } = useParams();
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
-  //const [{ user }, dispatch] = useStateValue();
   const { currentUser } = useContext(StateContext);
   const classes = useStyles();
   const messagesEndRef = useRef(null);
@@ -139,8 +136,6 @@ function Chat() {
   }
 
   useEffect(() => {
-    console.log(roomId);
-    console.log("this is the user from Chat component", currentUser);
     if (roomId) {
       db.collection("rooms")
         .doc(roomId)

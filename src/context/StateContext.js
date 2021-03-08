@@ -1,6 +1,5 @@
-import React, { createContext, useReducer, useEffect, useState } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 import reducer from "./reducer";
-import { Redirect } from "react-router-dom";
 import { auth, provider } from "../config/firebase";
 import { toast } from "react-toastify";
 
@@ -23,10 +22,8 @@ export const StateProvider = ({ children }) => {
           type: "LOAD_USER",
           payload: user,
         });
-        //      currentUser = user;
       } else {
         localStorage.setItem("isAuthenticated", false);
-        //     currentUser = null;
       }
     });
   }, []);
@@ -127,7 +124,6 @@ export const StateProvider = ({ children }) => {
       alert(error);
     }
   }
-  //    .catch((error) => alert(error.message));
 
   async function resetPassword(email) {
     try {
@@ -160,7 +156,6 @@ export const StateProvider = ({ children }) => {
         logOut,
         signUpEmailPwd,
         resetPassword,
-        //        loadUser,
       }}
     >
       {children}

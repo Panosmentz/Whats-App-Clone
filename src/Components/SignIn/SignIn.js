@@ -6,7 +6,6 @@ import TextField from "@material-ui/core/TextField";
 import { Redirect, Link } from "react-router-dom";
 import { StateContext } from "../../context/StateContext";
 import Grid from "@material-ui/core/Grid";
-
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -39,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#00a87e",
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
   },
   button: {
     color: "#00a87e",
@@ -87,29 +86,12 @@ export default function SignIn() {
   );
   const classes = useStyles();
 
-  //const [formData, setFormData] = useState({ email: "", password: "" });
-
-  // const { email, password } = formData;
-
-  //const onChange = (e) =>
-  //  setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  //const onSubmit = async (e) => {
-  //  e.preventDefault();
-  //  signIn(email, password);
-  //};
-
   const onSubmitGoogle = async (e) => {
     e.preventDefault();
     signInGoogle();
   };
 
   if (isAuthenticated === true) {
-    console.log(
-      "This is the current user from log in component : ",
-      currentUser,
-      isAuthenticated
-    );
     return <Redirect to="/rooms/" />;
   }
 
@@ -176,7 +158,7 @@ export default function SignIn() {
             </Button>
           </Grid>
           <Grid item>
-            <Button className={classes.button} component={Link} to="/register">
+            <Button className={classes.button} component={Link} to="/signup">
               Don't have an account? Sign Up
             </Button>
           </Grid>
