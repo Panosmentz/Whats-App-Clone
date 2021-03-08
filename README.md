@@ -1,68 +1,54 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Whats-App-Clone
 
-## Available Scripts
+### Technologies
 
-In the project directory, you can run:
+ReactJS
+MaterialUI
+Firebase
+EmailJS
+Formik - yup
 
-### `npm start`
+### Live demo
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+https://youthful-haibt-148fc8.netlify.app/
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Project Screenshots
 
-### `npm test`
+![LandingPage](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/landing.PNG)
+![signin](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/signin.PNG)
+![signup](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/signup.PNG)
+![forgotpwd](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/forgotpwd.PNG)
+![contact](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/contact.PNG)
+![suclogin](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/suclogin.PNG)
+![chat](https://github.com/Panosmentz/Projects-Screenshots/blob/master/WhatsAppClone%20screenshots/chat.PNG)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### App Setup
 
-### `npm run build`
+Clone the repository or download the .zip folder
+Open an editor and open the folder Whats-App-Clone-master
+Run `npm install` 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Setting up Firebase**
+Create a new project on Firebase and copy the config data
+On the project root folder, create a new file called .env.local
+Your .env.local file should look like this :
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+REACT_APP_FIREBASE_API_KEY=loremipsum
+REACT_APP_FIREBASE_AUTH_DOMAIN=loremipsum
+REACT_APP_FIREBASE_DATABASE_URL=loremipsum
+REACT_APP_FIREBASE_PROJECT_ID=loremipsum
+REACT_APP_FIREBASE_STORAGE_BUCKET=loremipsum
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=loremipsum
+REACT_APP_FIREBASE_APP_ID=loremipsum
+REACT_APP_FIREBASE_MEASUREMENT_ID=loremipsum
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Where loremipsum is the data from your Firebase project
 
-### `npm run eject`
+Run `npm start`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Deployment 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Run `npm run build`
+Deploy the `build` folder that is generated on the project directory
+Set up environment values for the Firebase config data
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
